@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "id": "4ebf",
+      "nombre": "Kevin",
+      "correo": "kevin.com",
+      "pass": "1234"
+    },
+    {
+      "id": "f33c",
+      "nombre": "Yani",
+      "correo": "yani.com",
+      "pass": "1234"
+    }
+  ]
+}
