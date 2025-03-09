@@ -11,6 +11,24 @@
       "nombre": "Yani",
       "correo": "yani.com",
       "pass": "1234"
+    },
+    {
+      "id": "4809",
+      "nombre": "Marco",
+      "correo": "marco.com",
+      "pass": "1234"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "554c",
+      "nombreUsuario": "Kevin",
+      "tarea": "Prueba"
+    },
+    {
+      "id": "ba39",
+      "nombreUsuario": "Kevin",
+      "tarea": "hola"
     }
   ]
 }

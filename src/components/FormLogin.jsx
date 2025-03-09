@@ -14,12 +14,12 @@ function FormLogin() {
 
     async function validarUsuario() {
     const todosLosUsuarios = await llamados.getUsers("usuarios")
-    console.log(todosLosUsuarios);
     const encontrado = todosLosUsuarios.find(usuario => usuario.nombre === nombreUsuario && usuario.pass === passUsuario)
-    console.log(encontrado);
+    
 
     if(encontrado){
         navigate("/home")
+        localStorage.setItem("NombreUsuario",encontrado.nombre)
     }else{
       Swal.fire({
         title: 'Error!',

@@ -1,8 +1,12 @@
 import React from 'react'
 
+import TareasHome from '../components/TareasHome'
+
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <TareasHome />  
+    </div>
   )
 }
 
