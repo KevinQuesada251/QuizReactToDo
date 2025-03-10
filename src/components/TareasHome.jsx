@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import Swal from 'sweetalert2'
 import llamados from '../services/llamados'
@@ -7,12 +7,14 @@ import "../styles/TareasHome.css"
 function TareasHome() {
 
   let nombreUsuario = localStorage.getItem("NombreUsuario")
-
+  const [tareasUsuario,setTareasUsuarios] = useState([])
+  
   useEffect(() => {
 
   async function mostrar() {
     const todasLasTareas = await llamados.getUsers("tareas")
     const tareasPorUsuario = todasLasTareas.filter(persona=> persona.nombreUsuario === nombreUsuario)
+    setTareasUsuarios(tareasPorUsuario)
     console.log(tareasPorUsuario);
     
   }
@@ -56,7 +58,14 @@ function TareasHome() {
     <div className='contenedorTareas'>
         <h1>Bienvenido a tu lista de tareas <span>{nombreUsuario}</span></h1>
         <div className='tarea'>
-            <p></p>
+            <ul>
+              {tareasUsuario.map((tarea,index)=>(
+                <li key={index}>
+                  <strong>Nombre:</strong>{tarea.nombreUsuario}
+                  <strong>Tarea:</strong>{tarea.tarea}
+                </li>
+              ))}
+            </ul>
 
             <button onClick={enviarNuevaTarea}>Nueva Tarea</button>
 
