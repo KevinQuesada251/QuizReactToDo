@@ -36,6 +36,9 @@ async function postUsers(obj,endpoint) {
 //////////////LLAMADO PATCH/////////////
 async function patchData(valor,endpoint,id)
 {
+const obj ={
+    tarea: valor
+}
 
     try {
         const response = await fetch(`http://localhost:3000/${endpoint}/`+id, {
@@ -43,7 +46,7 @@ async function patchData(valor,endpoint,id)
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(valor)
+            body: JSON.stringify(obj)
         });
         return await response.json();
     } catch (error) {

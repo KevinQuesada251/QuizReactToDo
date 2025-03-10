@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import "../styles/FormLogin.css"
 
 import llamados from '../services/llamados'
 import { useNavigate } from 'react-router-dom'
@@ -33,11 +35,17 @@ function FormLogin() {
   }
 
   return (
-    <div>
+    <div className='containerLogin'>
         <label htmlFor="">Nombre de Usuario</label>
+        <br />
         <input onChange={(evento)=>setNombreUsuario(evento.target.value)} type="text" name="" id="" />
+        <br />
         <label htmlFor="">Contraseña</label>
+        <br />
         <input onChange={(evento)=>setPassUsuario(evento.target.value)} type="text" name="" id="" />
+        <br />
+        <Link to="/register">No tienes cuenta? Registrate aquí</Link>
+        <br />
         <button className={estadoLogin} onClick={validarUsuario}>Iniciar</button>
     </div>
   )

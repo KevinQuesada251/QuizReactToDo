@@ -1,0 +1,9 @@
+.containerLogin{
+    width: 400px;
+    height: auto;
+    background-color: black;
+    position: relative;
+    left: 35%;
+    border-radius: 10px ;
+    color: white;
+}

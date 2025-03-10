@@ -8,7 +8,7 @@ function TareasHome() {
 
   let nombreUsuario = localStorage.getItem("NombreUsuario")
   const [tareasUsuario,setTareasUsuarios] = useState([])
-  
+  const [recarga,setRecarga] = useState(false)
   useEffect(() => {
 
   async function mostrar() {
@@ -16,11 +16,9 @@ function TareasHome() {
     const tareasPorUsuario = todasLasTareas.filter(persona=> persona.nombreUsuario === nombreUsuario)
     setTareasUsuarios(tareasPorUsuario)
     console.log(tareasPorUsuario);
-    
   }
-
   mostrar()
-},[])
+},[recarga])
   
 
 
@@ -35,39 +33,74 @@ function TareasHome() {
       focusConfirm: false,
       preConfirm: () => {
         return [
-          document.getElementById("tareaInfo").value
+          document.getElementById("tareaInfo").value,
         ];
       }
     });
-    
+    setRecarga(!recarga)
     if (formValues) {
       
       const nueva ={
         "nombreUsuario": nombreUsuario,
-        "tarea":document.getElementById("tareaInfo").value
+        "tarea":document.getElementById("tareaInfo").value,
+        "estado":false
       }
        llamados.postUsers( nueva,"tareas")
 
     }
   }
 
+ async function editar (id){
+  console.log(id);
+  
+  const { value: formValues } = await Swal.fire({
+    title: "Multiple inputs",
+    html: `
+      <input id="inputEditar">
+      
+    `,
+    focusConfirm: false,
+    preConfirm: () => {
+      return [
+         document.getElementById("inputEditar").value
+      ]
+    }
+  });
+  if (formValues) {
+    const tareaEditada = document.getElementById("inputEditar").value 
+    console.log(tareaEditada,id);
+    setRecarga(!recarga)
+    await llamados.patchData(tareaEditada,"tareas",id)
+  }
+}
  
 
 
   return (
     <div className='contenedorTareas'>
-        <h1>Bienvenido a tu lista de tareas <span>{nombreUsuario}</span></h1>
+        <h1 className='tituloToDo'>Bienvenido a tu lista de tareas <span>{nombreUsuario}</span></h1>
+        <h5 className='tituloRealizadas'>Tareas Realizadas</h5>
+        <div className='contador'>0</div>
+        
         <div className='tarea'>
             <ul>
-              {tareasUsuario.map((tarea,index)=>(
-                <li key={index}>
+              {tareasUsuario.map((tarea)=>(
+                <li key={tarea.id}>
+                  <input onClick={}  type="checkbox" />
                   <strong>Nombre:</strong>{tarea.nombreUsuario}
                   <strong>Tarea:</strong>{tarea.tarea}
+                  <button onClick={async () => {
+                    await llamados.deleteUser("tareas",tarea.id)
+                    setRecarga(!recarga)
+                  }}>Eliminar</button>
+                  <button onClick={(e)=>{
+                    editar(tarea.id)
+                  }}>Editar</button>
                 </li>
               ))}
             </ul>
 
-            <button onClick={enviarNuevaTarea}>Nueva Tarea</button>
+            <button id='btnNuevasTareas' onClick={enviarNuevaTarea}>Nueva Tarea</button>
 
         </div>
     </div>
