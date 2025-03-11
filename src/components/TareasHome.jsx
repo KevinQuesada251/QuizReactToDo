@@ -87,7 +87,6 @@ async function realizadas (id){
   await llamados.patchData(nuevoEstado,"tareas",id)
 
   setContador(contador + 1)
-  console.log(contador);
   setRecarga(!recarga)
   await llamados.deleteUser("tareas",id)
   
@@ -100,7 +99,8 @@ async function realizadas (id){
 
   return (
     <div className='contenedorTareas'>
-        <h1 className='tituloToDo'>Bienvenido a tu lista de tareas <span>{nombreUsuario}</span></h1>
+        <h1 className='tituloToDo'>Bienvenido a Tu Lista de Tareas</h1>
+        <p>Usuario: <span>{nombreUsuario}</span></p>
         <h5 className='tituloRealizadas'>Tareas Realizadas</h5>
         <div className='contador'>{contador}</div>
         
@@ -111,18 +111,18 @@ async function realizadas (id){
                   <input onClick={(e)=>{realizadas(tarea.id)}}  type="checkbox" />
                   <strong>Nombre:</strong>{tarea.nombreUsuario}
                   <strong>Tarea:</strong>{tarea.tarea}
-                  <button onClick={async () => {
+                  <button className='btnEliminar' onClick={async () => {
                     await llamados.deleteUser("tareas",tarea.id)
                     setRecarga(!recarga)
                   }}>Eliminar</button>
-                  <button onClick={(e)=>{
+                  <button className='btnEditar' onClick={(e)=>{
                     editar(tarea.id)
                   }}>Editar</button>
                 </li>
               ))}
             </ul>
 
-            <button id='btnNuevasTareas' onClick={enviarNuevaTarea}>Nueva Tarea</button>
+            <button id='btnNuevasTareas' onClick={enviarNuevaTarea}>Nueva Tarea</button>  
 
         </div>
     </div>

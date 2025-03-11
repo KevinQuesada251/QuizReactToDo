@@ -5,9 +5,9 @@ import "../styles/FormRegister.css"
 import llamados from '../services/llamados'
 
 function FormRegister() {
-  const [nombre,setNombre] = useState("")
-  const [correo,setCorreo] = useState("")
-  const [pass,setPass]= useState("")
+  const [nombre, setNombre] = useState("")
+  const [correo, setCorreo] = useState("")
+  const [pass, setPass] = useState("")
 
 
   function registrarUsuario() {
@@ -15,29 +15,42 @@ function FormRegister() {
       "nombre": nombre,
       "correo": correo,
       "pass": pass
-    } 
-    llamados.postUsers(usuario,"usuarios")
+    }
+    llamados.postUsers(usuario, "usuarios")
 
   }
-  
+
   return (
     <div className='formRegister'>
-        <label htmlFor="">Nombre de Usuario</label>
-        <br />
-        <input onChange={(evento)=>setNombre(evento.target.value)} type="text" name="" id="" />
-        <br />
-        <label  htmlFor="">Correo Electronico</label>
-        <br />
-        <input onChange={(evento)=>setCorreo(evento.target.value)} type="text" name="" id="" />
-        <br />
-        <label  htmlFor="">Contraseña</label>
-        <br />
-        <input onChange={(evento)=>setPass(evento.target.value)} type="text"  />
-        <br />
-        <h1>=======</h1>
-        <Link to="/">Inicia aquí si tienes cuenta</Link>
-        <br />
-        <button onClick={registrarUsuario}>Enviar</button>
+      <label htmlFor="">Nombre de Usuario</label>
+      <br />
+      <input onChange={(evento) => setNombre(evento.target.value)} type="text" name="" id="" />
+      <br />
+      <label htmlFor="">Correo Electronico</label>
+      <br />
+      <input onChange={(evento) => setCorreo(evento.target.value)} type="text" name="" id="" />
+      <br />
+      <label htmlFor="">Contraseña</label>
+      <br />
+      <input onChange={(evento) => setPass(evento.target.value)} type="text" />
+      <br />
+      <h1>=======</h1>
+      <Link to="/">Inicia aquí si tienes cuenta</Link>
+      <br />
+      
+      <button className="btn-53">
+        <div className="original">Iniciar</div>
+        <div className="letters">
+
+          <span>I</span>
+          <span>N</span>
+          <span>I</span>
+          <span>C</span>
+          <span>I</span>
+          <span>O</span>
+        </div>
+      </button>
+
     </div>
   )
 }
