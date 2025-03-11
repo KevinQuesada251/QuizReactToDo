@@ -50,6 +50,8 @@ function TareasHome() {
     }
   }
 
+  
+
  async function editar (id){
   console.log(id);
   
@@ -67,26 +69,46 @@ function TareasHome() {
     }
   });
   if (formValues) {
-    const tareaEditada = document.getElementById("inputEditar").value 
-    console.log(tareaEditada,id);
+    const editarTarea = {
+      "tarea": document.getElementById("inputEditar").value 
+    }
+    console.log(editarTarea,id);
     setRecarga(!recarga)
-    await llamados.patchData(tareaEditada,"tareas",id)
+    await llamados.patchData(editarTarea ,"tareas",id)
+
   }
 }
- 
+const [contador,setContador] = useState(0)
+
+async function realizadas (id){
+  const nuevoEstado = {
+    "estado": true
+  }
+  await llamados.patchData(nuevoEstado,"tareas",id)
+
+  setContador(contador + 1)
+  console.log(contador);
+  setRecarga(!recarga)
+  await llamados.deleteUser("tareas",id)
+  
+  
+}
+
+
+
 
 
   return (
     <div className='contenedorTareas'>
         <h1 className='tituloToDo'>Bienvenido a tu lista de tareas <span>{nombreUsuario}</span></h1>
         <h5 className='tituloRealizadas'>Tareas Realizadas</h5>
-        <div className='contador'>0</div>
+        <div className='contador'>{contador}</div>
         
         <div className='tarea'>
             <ul>
               {tareasUsuario.map((tarea)=>(
                 <li key={tarea.id}>
-                  <input onClick={}  type="checkbox" />
+                  <input onClick={(e)=>{realizadas(tarea.id)}}  type="checkbox" />
                   <strong>Nombre:</strong>{tarea.nombreUsuario}
                   <strong>Tarea:</strong>{tarea.tarea}
                   <button onClick={async () => {
