@@ -1,4 +1,6 @@
 .containerLogin{
+    display: grid;
+    justify-content: center;
     width: 400px;
     height: auto;
     background-color: black;

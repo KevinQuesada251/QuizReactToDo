@@ -18,6 +18,7 @@ async function getUsers(endpoint) {
 }
 //////////LLAMADO POST//////////
 async function postUsers(obj,endpoint) {
+   
     try {
         const response = await fetch(`http://localhost:3000/${endpoint}`, {
             method: 'POST',

@@ -24,32 +24,22 @@ function FormRegister() {
     <div className='formRegister'>
       <label htmlFor="">Nombre de Usuario</label>
       <br />
-      <input onChange={(evento) => setNombre(evento.target.value)} type="text" name="" id="" />
+      <input className='nombre' onChange={(evento) => setNombre(evento.target.value)} type="text" name="" id="" />
       <br />
-      <label htmlFor="">Correo Electronico</label>
+      <label  htmlFor="">Correo Electronico</label>
       <br />
-      <input onChange={(evento) => setCorreo(evento.target.value)} type="text" name="" id="" />
+      <input className='correo' onChange={(evento) => setCorreo(evento.target.value)} type="text" name="" id="" />
       <br />
       <label htmlFor="">Contraseña</label>
       <br />
-      <input onChange={(evento) => setPass(evento.target.value)} type="text" />
+      <input className='contra' onChange={(evento) => setPass(evento.target.value)} type="text" />
       <br />
-      <h1>=======</h1>
       <Link to="/">Inicia aquí si tienes cuenta</Link>
       <br />
       
-      <button className="btn-53">
-        <div className="original">Iniciar</div>
-        <div className="letters">
+      
+      <button class="btn-12"><span>Registrar</span></button>
 
-          <span>I</span>
-          <span>N</span>
-          <span>I</span>
-          <span>C</span>
-          <span>I</span>
-          <span>O</span>
-        </div>
-      </button>
 
     </div>
   )

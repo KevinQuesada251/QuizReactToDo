@@ -30,6 +30,9 @@ function TareasHome() {
       html: `
         <input id="tareaInfo" class="swal1-input">
       `,
+      customClass: {
+        htmlContainer: 'costum-container',
+      },
       focusConfirm: false,
       preConfirm: () => {
         return [
@@ -100,7 +103,7 @@ async function realizadas (id){
   return (
     <div className='contenedorTareas'>
         <h1 className='tituloToDo'>Bienvenido a Tu Lista de Tareas</h1>
-        <p>Usuario: <span>{nombreUsuario}</span></p>
+        <p className='nombreUsuario'>Usuario: <span>{nombreUsuario}</span></p>
         <h5 className='tituloRealizadas'>Tareas Realizadas</h5>
         <div className='contador'>{contador}</div>
         
