@@ -1,0 +1,3 @@
+tengo un componente login donde hice una condicional para comprobar si el esta en la base de datos y guardo el nombre en el Local Storage, si el entra a la página principal solo le muestra las tareas de el gracias a un filter con el nombre de la persona, el puede hacer tareas nuevas y se muestran en pantalla, editarlas y eliminarlas, tiene un checkbox que elimina la tarea cuando lo presiona y la cuenta como tarea realizada y por ultimo tiene un register donde envia la información del registro al db.json
+
+Dependencias sweet alert
