@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import "../styles/FormLogin.css"
+import "../styles/FormLogin.css" //hoja de estilos
 
 import llamados from '../services/llamados'
 import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'//sweet Alert 2
 
 function FormLogin() {
 
+  // aqui empiezan los hooks
   const [nombreUsuario,setNombreUsuario] = useState("")
   const [passUsuario,setPassUsuario] = useState("") 
   const [estadoLogin,setEstadoLogin] = useState("btn btn-primary")
   const navigate = useNavigate()
-
+// aqui terminan los hooks
 
     async function validarUsuario() {
-    const todosLosUsuarios = await llamados.getUsers("usuarios")
-    const encontrado = todosLosUsuarios.find(usuario => usuario.nombre === nombreUsuario && usuario.pass === passUsuario)
+    const todosLosUsuarios = await llamados.getUsers("usuarios") //obtener todo los usuarios
+    const encontrado = todosLosUsuarios.find(usuario => usuario.nombre === nombreUsuario && usuario.pass === passUsuario) //filtro al usuario por nombre y contraseña
     
 
-    if(encontrado){
+    if(encontrado){ //si es encontrado entonce lo redirige a la pagina de home y guardo el nombre en el Local Storage
         navigate("/home")
         localStorage.setItem("NombreUsuario",encontrado.nombre)
     }else{

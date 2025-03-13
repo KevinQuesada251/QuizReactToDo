@@ -5,18 +5,18 @@ import "../styles/FormRegister.css"
 import llamados from '../services/llamados'
 
 function FormRegister() {
-  const [nombre, setNombre] = useState("")
-  const [correo, setCorreo] = useState("")
-  const [pass, setPass] = useState("")
+  const [nombre, setNombre] = useState("") //hook para guardar el nombre
+  const [correo, setCorreo] = useState("") //hook para guardar el correo
+  const [pass, setPass] = useState("")  //hook para guardar la contraseña
 
 
-  function registrarUsuario() {
+  function registrarUsuario() { //creo un objeto y guarda la info de los hooks
     let usuario = {
       "nombre": nombre,
       "correo": correo,
       "pass": pass
     }
-    llamados.postUsers(usuario, "usuarios")
+    llamados.postUsers(usuario, "usuarios") //uso el metodo post para enviarlo al db.json
 
   }
 
